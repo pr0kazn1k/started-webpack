@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const production = process.argv.indexOf('-p') !== -1;
 
@@ -47,7 +48,21 @@ module.exports = {
 
 	plugins: [
 		new ExtractTextPlugin('style.css'),
-		new SpriteLoaderPlugin()
+		/*new BrowserSyncPlugin(
+            {
+                proxy: 'http://razvitiekam.org/',
+                tunnel: true,
+                files: ['public/*', 'public/index.php']
+            },
+            {
+                reload: false
+            }),*/
+		new SpriteLoaderPlugin(),
+		/*new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),*/
 	]
 
 };
